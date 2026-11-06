@@ -700,7 +700,7 @@ function update(dt){
   const every=act.length?Math.max(3.5,8-(L-1)*.5):.6;
   G.spawnT+=dt;
   if(G.spawnT>=every&&act.length<12)spawn(W,H);
-  const speed=Math.max(H/5,60)*(1+(L-1)*.08);
+  const speed=Math.max(H/10,60)*(1+(L-1)*.08);
   const live=G.wins.filter(w=>!w.done);
   live.forEach(w=>{w.w=w.el.offsetWidth;w.h=w.el.offsetHeight;w.x=Math.min(w.x,Math.max(8,W-w.w-8))});
   live.sort((a,b)=>b.y-a.y);
