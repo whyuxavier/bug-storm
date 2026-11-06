@@ -5,12 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#1c1e24">
 <script>try{if(localStorage.getItem("bs_theme")==='"light"')document.documentElement.dataset.theme="light"}catch(e){}</script>
-<meta name="description" content="Баг-шторм — гра і тестування з HTML та CSS: виправ код у вікнах помилок, поки вони не впали.">
-<title>Баг-шторм · HTML &amp; CSS</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='8' width='56' height='48' rx='10' fill='%23252830' stroke='%239b8fd6' stroke-width='4'/%3E%3Cpath d='M4 18a10 10 0 0 1 10-10h36a10 10 0 0 1 10 10v4H4z' fill='%23e39aa6'/%3E%3Cpath d='M23 31l-8 8 8 8M41 31l8 8-8 8' fill='none' stroke='%235fa3b6' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M35 29l-6 20' stroke='%237cbf98' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="description" content="Баг-шторм — гра і тестування: виправ помилки в коді HTML, CSS і Python, поки вікна не завалили екран.">
+<title>Баг-шторм · HTML, CSS, Python</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='8' width='56' height='48' rx='10' fill='%23252830' stroke='%238ea9db' stroke-width='4'/%3E%3Cpath d='M4 18a10 10 0 0 1 10-10h36a10 10 0 0 1 10 10v4H4z' fill='%23d9909c'/%3E%3Cpath d='M16 31l9 7-9 7' fill='none' stroke='%238ea9db' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M30 46h16' stroke='%23d8be6a' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
-:root{--bg:#1c1e24;--panel:#252830;--panel2:#2d3039;--line:#3a3e49;--text:#e3e1dc;--muted:#9a9ca6;--acc:#9b8fd6;--acc2:#7fb8c9;--ok:#7cbf98;--err:#d9909c;--warn:#d4b06a;--errT:#3d2d33;--errD:#e8b4bd;--okT:#2a3a31;--okD:#a9dcbd;--accD:#c3bbec;--accT:#33304a;--acc2T:#263a42;--acc2D:#8cc6d6;--hdr:rgba(28,30,36,.92);--ovl:rgba(28,30,36,.86);--shadow:rgba(0,0,0,.35);--grad:linear-gradient(90deg,#e0a3ae,#b3a8e6,#8cc6d6);--gridc:rgba(155,143,214,.12);--wgrid:rgba(155,143,214,.07);--s1:#252830;--s2:#2d3039;--s3:#3a3e49;--s4:#1e2026;--serr:#d9909c;--smut:#9a9ca6;--sln:#5b5f6b;--stag:#b3a8e6;--stx:#e3e1dc;--scy:#8cc6d6;--serrD:#e8b4bd;--sokD:#a9dcbd;--scy2:#8cc6d6;--serrT:#3d2d33;--sokT:#2a3a31;color-scheme:dark;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
-:root[data-theme="light"]{--bg:#f4f2ee;--panel:#ffffff;--panel2:#efece6;--line:#ddd8cf;--text:#3b4050;--muted:#7d8291;--acc:#9b8fd6;--acc2:#7fb8c9;--ok:#7cbf98;--err:#e39aa6;--warn:#c9a25c;--errT:#f6dde1;--errD:#8a3d4b;--okT:#d9efe2;--okD:#2f6b4a;--accD:#5b4fa0;--accT:#e7e3f7;--acc2T:#e6f1f5;--acc2D:#5fa3b6;--hdr:rgba(244,242,238,.92);--ovl:rgba(244,242,238,.85);--shadow:rgba(60,55,45,.12);--grad:linear-gradient(90deg,#c97b8a,#8a7cc8,#5fa3b6);--gridc:rgba(155,143,214,.16);--wgrid:rgba(155,143,214,.09);--s1:#ffffff;--s2:#efece6;--s3:#ddd8cf;--s4:#ece9e3;--serr:#e39aa6;--smut:#7d8291;--sln:#b8b3aa;--stag:#8a7cc8;--stx:#3b4050;--scy:#5fa3b6;--serrD:#8a3d4b;--sokD:#2f6b4a;--scy2:#4c8fa2;--serrT:#f6dde1;--sokT:#d9efe2;color-scheme:light}
+:root{--bg:#1c1e24;--panel:#252830;--panel2:#2d3039;--line:#3a3e49;--text:#e3e1dc;--muted:#9a9ca6;--acc:#8ea9db;--acc2:#d8be6a;--ok:#7cbf98;--err:#d9909c;--warn:#d4b06a;--errT:#3d2d33;--errD:#e8b4bd;--okT:#2a3a31;--okD:#a9dcbd;--accD:#b8ccee;--accT:#2a3346;--acc2T:#3a3527;--acc2D:#e3cc85;--hdr:rgba(28,30,36,.92);--ovl:rgba(28,30,36,.86);--shadow:rgba(0,0,0,.35);--grad:linear-gradient(90deg,#a9c1ea,#e3cc85);--gridc:rgba(142,169,219,.12);--wgrid:rgba(142,169,219,.07);
+--s1:#252830;--s2:#2d3039;--s3:#3a3e49;--s4:#1e2026;--serr:#d9909c;--smut:#9a9ca6;--sln:#5b5f6b;--skw:#a9c1ea;--stx:#e3e1dc;--sstr:#e3cc85;--snum:#d9a7c7;--stag:#b3a8e6;--scy:#8cc6d6;--scy2:#8cc6d6;--serrD:#e8b4bd;--sokD:#a9dcbd;--serrT:#3d2d33;--sokT:#2a3a31;
+color-scheme:dark;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+:root[data-theme="light"]{--bg:#f4f2ee;--panel:#ffffff;--panel2:#efece6;--line:#ddd8cf;--text:#3b4050;--muted:#7d8291;--acc:#8ea9db;--acc2:#d8be6a;--ok:#7cbf98;--err:#e39aa6;--warn:#b58f3e;--errT:#f6dde1;--errD:#8a3d4b;--okT:#d9efe2;--okD:#2f6b4a;--accD:#3f5f99;--accT:#e3ebf7;--acc2T:#f6efd9;--acc2D:#a8872f;--hdr:rgba(244,242,238,.92);--ovl:rgba(244,242,238,.85);--shadow:rgba(60,55,45,.12);--grad:linear-gradient(90deg,#5b7fbf,#c49a3a);--gridc:rgba(142,169,219,.2);--wgrid:rgba(142,169,219,.12);
+--s1:#ffffff;--s2:#efece6;--s3:#ddd8cf;--s4:#ece9e3;--serr:#e39aa6;--smut:#7d8291;--sln:#b8b3aa;--skw:#4f6fae;--stx:#3b4050;--sstr:#a8872f;--snum:#a35d86;--stag:#8a7cc8;--scy:#5fa3b6;--scy2:#4c8fa2;--serrD:#8a3d4b;--sokD:#2f6b4a;--serrT:#f6dde1;--sokT:#d9efe2;color-scheme:light}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html,body{margin:0}
@@ -20,10 +23,12 @@ button{font:inherit;touch-action:manipulation}
 body.playing{overflow:hidden}
 body.playing #app{position:fixed;left:0;right:0;top:var(--vt,0px);height:var(--vh,100dvh);min-height:0}
 
-/* header */
 .top{display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--hdr);backdrop-filter:blur(8px);position:sticky;top:0;z-index:20;flex:none}
 .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:17px;background:none;border:0;color:inherit;cursor:pointer;padding:0}
 .brand svg{width:30px;height:30px}
+@media(max-width:400px){.pyb{display:none}}
+.brand{white-space:nowrap}
+.pyb{font:800 11px var(--mono);padding:2px 7px;border-radius:6px;background:var(--accT);color:var(--accD)}
 .sp{flex:1}
 .ib{width:38px;height:38px;flex:none;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--text);display:grid;place-items:center;cursor:pointer;font:800 16px var(--mono);padding:0}
 .ib:hover{border-color:var(--acc)}
@@ -33,21 +38,24 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
 .screen.on{display:flex}
 .muted{color:var(--muted)}
 
-/* buttons */
 .btns{display:flex;flex-wrap:wrap;gap:12px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:12px;font-weight:700;border:1px solid transparent;cursor:pointer;color:var(--text);text-decoration:none}
-.btn.pri{background:var(--acc);color:#fff;box-shadow:0 6px 16px rgba(155,143,214,.3)}
+.btn.pri{background:var(--acc);color:#1f2a40;box-shadow:0 6px 16px rgba(142,169,219,.25)}
 .btn.sec{background:var(--panel);border-color:var(--line)}
-.btn:hover{filter:brightness(1.1)}
+.btn:hover{filter:brightness(1.07)}
 .btn:active{transform:translateY(1px)}
+.seg{display:inline-flex;padding:4px;gap:4px;border-radius:12px;background:var(--panel2);border:1px solid var(--line)}
+.seg button{border:0;background:none;color:var(--muted);font-weight:700;padding:8px 16px;border-radius:9px;cursor:pointer}
+.seg button.on{background:var(--panel);color:var(--text);box-shadow:0 1px 4px var(--shadow)}
 
-/* hero */
 #home{flex-direction:column;flex:1}
 .hero{position:relative;isolation:isolate;flex:1;display:grid;grid-template-columns:1fr;gap:28px;align-items:center;padding:32px 16px 44px;max-width:1140px;margin:0 auto;width:100%}
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(var(--gridc) 1px,transparent 1px),linear-gradient(90deg,var(--gridc) 1px,transparent 1px);background-size:32px 32px;-webkit-mask-image:radial-gradient(ellipse 70% 65% at 50% 45%,#000 25%,transparent 78%);mask-image:radial-gradient(ellipse 70% 65% at 50% 45%,#000 25%,transparent 78%)}
 .hero h1{font-size:clamp(36px,6vw,58px);line-height:1.05;margin:0 0 14px;letter-spacing:-.5px}
 .hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{color:var(--muted);font-size:18px;max-width:42ch;margin:0 0 24px}
+.lead{color:var(--muted);font-size:18px;max-width:42ch;margin:0 0 20px}
+.selrow{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.fcard .selrow{justify-content:center;margin:0}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
 .chip{font:700 14px var(--mono);padding:4px 11px;border-radius:999px;background:var(--panel2);border:1px solid var(--line);white-space:nowrap}
 .art{width:100%;max-width:560px;justify-self:center}
@@ -55,17 +63,16 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
 @media(min-width:860px){.hero{grid-template-columns:1fr 1.05fr;padding:56px 32px}}
 .mono{font-family:var(--mono)}
 .hero-svg .dlg{transform-box:fill-box;transform-origin:center;animation:drop .75s cubic-bezier(.2,1.35,.4,1) .15s both}
-.hero-svg .cover{transform-box:fill-box;transform-origin:right center;transform:scaleX(0);animation:typing .7s steps(12) .95s both}
-.hero-svg .red{opacity:0;animation:fadeOut .3s 1.75s both}
-.hero-svg .green{opacity:1;animation:fadeIn .3s 1.75s both}
-.hero-svg .pop{transform-box:fill-box;transform-origin:center;animation:pop .45s cubic-bezier(.3,1.6,.5,1) 2s both}
+.hero-svg .cover{transform-box:fill-box;transform-origin:right center;transform:scaleX(0);animation:typing .6s steps(9) .95s both}
+.hero-svg .red{opacity:0;animation:fadeOut .3s 1.7s both}
+.hero-svg .green{opacity:1;animation:fadeIn .3s 1.7s both}
+.hero-svg .pop{transform-box:fill-box;transform-origin:center;animation:pop .45s cubic-bezier(.3,1.6,.5,1) 1.95s both}
 @keyframes drop{from{transform:translateY(-170px);opacity:0}to{transform:none;opacity:1}}
 @keyframes typing{from{transform:scaleX(1)}to{transform:scaleX(0)}}
 @keyframes fadeOut{from{opacity:1}to{opacity:0}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes pop{from{transform:scale(0);opacity:0}to{transform:none;opacity:1}}
 
-/* game */
 #game,#test{flex-direction:column;flex:1;min-height:0}
 .hud{display:flex;align-items:center;gap:8px;padding:8px 12px;flex-wrap:wrap;flex:none;border-bottom:1px solid var(--line);background:var(--panel)}
 .hearts{display:flex;gap:1px}
@@ -78,38 +85,41 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
 #hCombo{color:var(--warn);min-width:34px;text-align:right}
 .ws{position:relative;flex:1;min-height:0;overflow:hidden;background-image:linear-gradient(var(--wgrid) 1px,transparent 1px),linear-gradient(90deg,var(--wgrid) 1px,transparent 1px);background-size:28px 28px}
 .ws.hurt{animation:hurt .45s}
-@keyframes hurt{0%,100%{box-shadow:inset 0 0 0 0 rgba(255,77,109,0)}30%{box-shadow:inset 0 0 0 3px rgba(227,154,166,.8),inset 0 -40px 60px rgba(227,154,166,.18)}}
+@keyframes hurt{0%,100%{box-shadow:inset 0 0 0 0 rgba(217,144,156,0)}30%{box-shadow:inset 0 0 0 3px rgba(217,144,156,.8),inset 0 -40px 60px rgba(217,144,156,.18)}}
 .console{flex:none;border-top:1px solid var(--line);background:var(--panel2);padding:8px 10px calc(8px + env(safe-area-inset-bottom))}
 .console>*{max-width:860px;margin-left:auto;margin-right:auto}
 .keys{display:none;gap:6px;overflow-x:auto;padding-bottom:7px;scrollbar-width:none}
 .keys::-webkit-scrollbar{display:none}
 @media (pointer:coarse),(max-width:700px){.keys{display:flex}}
-.keys button{flex:none;min-width:38px;height:36px;padding:0 8px;border-radius:9px;border:1px solid var(--line);background:var(--panel2);color:var(--text);font:700 16px var(--mono);cursor:pointer}
+.keys button{flex:none;min-width:38px;height:36px;padding:0 8px;border-radius:9px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:700 16px var(--mono);cursor:pointer}
 .cform{display:flex;gap:8px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px 4px 4px 12px}
-.cform:focus-within{border-color:var(--acc2);box-shadow:0 0 0 3px rgba(127,184,201,.2)}
-.prompt{color:var(--acc2D);font:800 16px var(--mono)}
-.cin{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--text);font:16px var(--mono);padding:9px 0}
-.go{flex:none;height:40px;min-width:48px;border-radius:9px;border:0;background:var(--acc);color:#fff;font:800 18px var(--mono);cursor:pointer}
+.cform:focus-within{border-color:var(--acc);box-shadow:0 0 0 3px rgba(142,169,219,.2)}
+.prompt{color:var(--acc2D);font:800 15px var(--mono);white-space:nowrap}
+.cin{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--text);font:16px var(--mono);padding:9px 0;white-space:pre}
+.go{flex:none;height:40px;min-width:48px;border-radius:9px;border:0;background:var(--acc);color:#1f2a40;font:800 18px var(--mono);cursor:pointer}
 .cmsg{min-height:20px;font:12px/1.5 var(--mono);color:var(--muted);padding:4px 4px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cmsg.ok{color:var(--ok)}.cmsg.err{color:var(--err)}
+.cmsg.ok{color:var(--okD)}.cmsg.err{color:var(--errD)}
 .shake{animation:shake .35s}
 @keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 
-.win{position:absolute;width:min(330px,calc(100% - 20px));border-radius:12px;background:var(--panel);border:1px solid var(--err);box-shadow:0 6px 18px var(--shadow);cursor:pointer;user-select:none;-webkit-user-select:none}
+.win{position:absolute;width:min(350px,calc(100% - 20px));border-radius:12px;background:var(--panel);border:1px solid var(--err);box-shadow:0 6px 18px var(--shadow);cursor:pointer;user-select:none;-webkit-user-select:none}
 .win .tb{display:flex;align-items:center;gap:6px;padding:5px 10px;background:var(--errT);color:var(--errD);font:800 12px var(--mono);border-radius:10px 10px 0 0}
-.win .tag{font-size:10px;background:rgba(0,0,0,.06);padding:1px 7px;border-radius:6px}
-.win .x{margin-left:auto;opacity:.75}
-.win pre{margin:0;padding:10px 12px 4px;font:700 15px/1.4 var(--mono);white-space:pre-wrap;word-break:break-all;color:var(--text)}
-.win .hint{padding:0 12px 6px;font-size:12.5px;color:var(--muted)}
+.win .tag{font-size:10px;background:rgba(127,127,127,.15);padding:1px 7px;border-radius:6px}
+.win .x{margin-left:auto;opacity:.7}
+.win pre{margin:0;padding:8px 0 4px;font:600 14px/1.5 var(--mono);white-space:pre-wrap;word-break:break-all}
+.ln{display:block;padding:0 12px;color:var(--muted);min-height:1.5em}
+.ln.bad{color:var(--text);font-weight:800;background:var(--errT)}
+.win.heal .ln.bad{background:var(--okT)}
+.win .hint{padding:2px 12px 6px;font-size:12.5px;color:var(--muted)}
 .win.heal{border-color:var(--ok)}.win.heal .tb{background:var(--okT);color:var(--okD)}
 .win .ttl{height:3px;margin:0 12px 8px;background:var(--panel2);border-radius:3px;overflow:hidden;opacity:0;transition:opacity .3s}
 .win.landed .ttl{opacity:1}
-.win .ttl i{display:block;height:100%;background:var(--acc2);transform-origin:left}
+.win .ttl i{display:block;height:100%;background:var(--acc);transform-origin:left}
 .win.late .ttl i{background:var(--err)}
-.twin .ttl{display:none}
-.win.sel{outline:2px solid var(--acc2);outline-offset:2px}
+.win.sel{outline:2px solid var(--acc);outline-offset:2px}
 .win.fixed,.win.good{border-color:var(--ok)}
 .win.fixed .tb,.win.good .tb{background:var(--okT);color:var(--okD)}
+.win.fixed .ln.bad,.win.good .ln.bad{background:var(--okT)}
 .win.fixed{animation:fixOut .45s forwards}
 .win.miss{animation:missOut .4s forwards}
 @keyframes fixOut{to{opacity:0;transform:scale(.85)}}
@@ -128,29 +138,31 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
 .grid3 span{font-size:12px;color:var(--muted)}
 .card .btns{justify-content:center}
 
-/* test */
 .tws{display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
-.twin{position:relative;width:min(540px,100%);cursor:default;animation:dropIn .45s cubic-bezier(.2,1.3,.4,1)}
-.twin pre{font-size:17px;padding:16px 16px 6px}
-.twin .hint{padding:0 16px 16px;font-size:14px}
+.twin{position:relative;width:min(560px,100%);cursor:default;animation:dropIn .45s cubic-bezier(.2,1.3,.4,1)}
+.twin pre{font-size:16px;padding:12px 0 6px}
+.twin .ln{padding:0 16px}
+.twin .hint{padding:2px 16px 16px;font-size:14px}
+.twin .ttl{display:none}
 .twin.bad{animation:shake .35s}
 .qwin{border-color:var(--acc)}.qwin .tb{background:var(--accT);color:var(--accD)}
 .qq{padding:16px 16px 4px;font-weight:700;font-size:17px}
+.qq code{font:700 15px var(--mono);background:var(--panel2);padding:1px 6px;border-radius:6px}
 .opts{display:grid;grid-template-columns:1fr;gap:8px;padding:12px 16px 16px}
 @media(min-width:560px){.opts{grid-template-columns:1fr 1fr}}
-.opts button{padding:12px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:600 15px var(--mono);cursor:pointer;text-align:left;word-break:break-word}
-.opts button:hover{border-color:var(--acc2)}
-.opts button.pick{border-color:var(--acc2);background:var(--acc2T)}
+.opts button{padding:12px;border-radius:10px;border:1px solid var(--line);background:var(--panel2);color:var(--text);font:600 15px var(--mono);cursor:pointer;text-align:left;word-break:break-word}
+.opts button:hover{border-color:var(--acc)}
+.opts button.pick{border-color:var(--acc);background:var(--accT)}
 @keyframes dropIn{from{transform:translateY(-60px);opacity:0}to{transform:none;opacity:1}}
 
 .formwrap{flex:1;display:grid;place-items:center;padding:24px 16px}
 .fcard{display:flex;flex-direction:column;gap:12px;text-align:left}
 .fcard h2,.fcard p{margin:0;text-align:center}
+.fcard .seg{align-self:center}
 .fcard label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
 .fcard input{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px;color:var(--text);font:16px inherit;outline:0}
-.fcard input:focus{border-color:var(--acc2)}
+.fcard input:focus{border-color:var(--acc)}
 
-/* result */
 #result{flex:1;justify-content:center;padding:24px 16px}
 .res{width:min(900px,100%)}
 .rhead{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px}
@@ -158,17 +170,16 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
 .grade{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;border:5px solid var(--gc,var(--acc));font:900 34px var(--mono);flex:none}
 .grade small{display:block;font-size:12px;color:var(--muted);margin-top:-8px;text-align:center}
 .cats{display:grid;gap:8px;margin:16px 0}
-.cat{display:grid;grid-template-columns:90px 1fr 46px;gap:10px;align-items:center;font:13px var(--mono)}
+.cat{display:grid;grid-template-columns:110px 1fr 46px;gap:10px;align-items:center;font:13px var(--mono)}
 .tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin-bottom:18px}
 .rt{width:100%;border-collapse:collapse;font-size:14px;min-width:560px}
 .rt th,.rt td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 .rt th{background:var(--panel2);font-size:12px;color:var(--muted)}
-.rt code{font-family:var(--mono);font-size:13px;word-break:break-all}
+.rt code{font-family:var(--mono);font-size:13px;word-break:break-all;white-space:pre-wrap}
 .rt tr:last-child td{border-bottom:0}
 .okc{color:var(--okD);font-weight:800}.bdc{color:var(--errD);font-weight:800}
 
-/* modal */
-.modal{position:fixed;inset:0;z-index:50;background:rgba(60,58,70,.35);display:grid;place-items:center;padding:16px}
+.modal{position:fixed;inset:0;z-index:50;background:rgba(20,20,26,.5);display:grid;place-items:center;padding:16px}
 .mbox{background:var(--panel);border:1px solid var(--line);border-radius:18px;width:min(540px,100%);max-height:86vh;overflow:auto;padding:22px;position:relative}
 .mbox h2{margin:0 36px 8px 0}
 .mbox h3{margin:16px 0 6px;font-size:15px;color:var(--acc2D)}
@@ -176,8 +187,8 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
 .mbox li{margin:3px 0}
 .mbox kbd{font:700 12px var(--mono);background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;color:var(--text)}
 .mclose{position:absolute;top:14px;right:14px}
-.gh{margin-top:18px;display:inline-flex}
-.gh svg{width:18px;height:18px;fill:var(--warn)}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.links svg{width:18px;height:18px;fill:var(--warn)}
 
 @media (prefers-reduced-motion:reduce){
   .hero-svg *{animation:none!important}
@@ -195,8 +206,8 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
 <div id="app">
 <header class="top">
   <button class="brand" id="brand" aria-label="На головну">
-    <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="8" width="56" height="48" rx="10" stroke="#9b8fd6" stroke-width="4" style="fill:var(--s1)"/><path d="M4 18a10 10 0 0 1 10-10h36a10 10 0 0 1 10 10v4H4z" style="fill:var(--serr)"/><path d="M23 31l-8 8 8 8M41 31l8 8-8 8" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--scy)"/><path d="M35 29l-6 20" stroke="#7cbf98" stroke-width="5" stroke-linecap="round"/></svg>
-    Баг-шторм
+    <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="4" y="8" width="56" height="48" rx="10" style="fill:var(--s1);stroke:var(--acc)" stroke-width="4"/><path d="M4 18a10 10 0 0 1 10-10h36a10 10 0 0 1 10 10v4H4z" style="fill:var(--serr)"/><path d="M16 31l9 7-9 7" fill="none" style="stroke:var(--acc)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 46h16" style="stroke:var(--acc2)" stroke-width="5" stroke-linecap="round"/></svg>
+    Баг-шторм <span class="pyb" id="trackPill">Python</span>
   </button>
   <span class="sp"></span>
   <button class="ib" id="themeBtn" aria-label="Тема"></button>
@@ -205,12 +216,12 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
 </header>
 
 <main>
-<!-- HOME -->
 <section id="home" class="screen on">
   <div class="hero">
     <div>
       <h1>Баг-<em>шторм</em></h1>
-      <p class="lead">Вікна з помилками HTML і CSS падають і складаються в стос. Виправ код у консолі, поки їх не завалило.</p>
+      <p class="lead">Вікна з помилками в коді падають і складаються в стос. Виправ рядок у консолі, поки їх не завалило.</p>
+      <div class="selrow"><div class="seg" data-track-seg><button data-tr="html">HTML і CSS</button><button data-tr="py">Python</button></div><div class="seg" data-grade-seg><button data-g="8">8 клас</button><button data-g="9">9 клас</button></div></div>
       <div class="btns">
         <button class="btn pri" id="playBtn">▶ Грати</button>
         <button class="btn sec" id="testBtn">📝 Тестування</button>
@@ -218,8 +229,8 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
       <div class="chips"><span class="chip">🏆 <b id="sBest">0</b></span><span class="chip">⚡ XP <b id="sXp">0</b></span></div>
     </div>
     <div class="art">
-      <svg class="hero-svg" viewBox="0 0 560 420" role="img" aria-label="Редактор коду з вікном помилки, яку виправляють у консолі">
-        <defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9c1ee"/><stop offset="1" stop-color="#b3dbe5"/></linearGradient></defs>
+      <svg class="hero-svg" id="heroHtml" hidden viewBox="0 0 560 420" role="img" aria-label="Редактор коду з вікном помилки, яку виправляють у консолі">
+        <defs><linearGradient id="hg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9c1ee"/><stop offset="1" stop-color="#b3dbe5"/></linearGradient></defs>
         <!-- editor -->
         <rect x="10" y="20" width="410" height="300" rx="16" stroke-width="2" style="fill:var(--s1);stroke:var(--s3)"/>
         <path d="M11 36a15 15 0 0 1 15-15h378a15 15 0 0 1 15 15v14H11z" style="fill:var(--s2)"/>
@@ -269,10 +280,68 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
           <text x="462" y="104" style="fill:var(--scy2)">{ } CSS</text>
         </g>
         <g class="pop">
-          <circle cx="495" cy="196" r="44" fill="url(#hg)"/>
+          <circle cx="495" cy="196" r="44" fill="url(#hg2)"/>
           <path d="M495 166l6.6 13.4 14.8 2.1-10.7 10.4 2.5 14.7-13.2-6.9-13.2 6.9 2.5-14.7-10.7-10.4 14.8-2.1z" fill="#fff" fill-opacity=".45"/>
           <text x="495" y="200" text-anchor="middle" class="mono" font-size="22" font-weight="900" fill="#4a4570">+25</text>
           <text x="495" y="220" text-anchor="middle" class="mono" font-size="12" font-weight="800" fill="#4a4570">XP</text>
+        </g>
+        <g style="fill:var(--serr)">
+          <path transform="translate(440 272) scale(.85)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          <path transform="translate(462 272) scale(.85)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          <path transform="translate(484 272) scale(.85)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          <path transform="translate(506 272) scale(.85)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          <path transform="translate(528 272) scale(.85)" fill="#7cbf98" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </g>
+      </svg>
+      <svg class="hero-svg" id="heroPy" viewBox="0 0 560 420" role="img" aria-label="Редактор коду Python з вікном помилки, яку виправляють у консолі">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#bcd0f0"/><stop offset="1" stop-color="#ecdca6"/></linearGradient></defs>
+        <rect x="10" y="20" width="410" height="300" rx="16" style="fill:var(--s1);stroke:var(--s3)" stroke-width="2"/>
+        <path d="M11 36a15 15 0 0 1 15-15h378a15 15 0 0 1 15 15v14H11z" style="fill:var(--s2)"/>
+        <circle cx="32" cy="36" r="5" style="fill:var(--serr)"/><circle cx="50" cy="36" r="5" fill="#e8c98a"/><circle cx="68" cy="36" r="5" fill="#7cbf98"/>
+        <rect x="88" y="26" width="84" height="24" rx="6" style="fill:var(--s1);stroke:var(--s3)"/><text x="100" y="43" class="mono" font-size="12" style="fill:var(--smut)">main.py</text>
+        <g class="mono" font-size="14">
+          <g style="fill:var(--sln)"><text x="24" y="82">1</text><text x="24" y="108">2</text><text x="24" y="134">3</text><text x="24" y="160">4</text><text x="24" y="186">5</text><text x="24" y="212">6</text><text x="24" y="238">7</text><text x="24" y="264">8</text><text x="24" y="290">9</text></g>
+          <text x="50" y="82" style="fill:var(--skw)">import <tspan style="fill:var(--stx)">random</tspan></text>
+          <text x="50" y="134" style="fill:var(--stx)">x = random.randint(<tspan style="fill:var(--snum)">1</tspan>, <tspan style="fill:var(--snum)">10</tspan>)</text>
+          <rect class="red" x="44" y="144" width="366" height="23" rx="4" style="fill:var(--serr)" fill-opacity=".2"/>
+          <rect class="green" x="44" y="144" width="366" height="23" rx="4" fill="#7cbf98" fill-opacity=".22"/>
+          <text class="red" x="50" y="160" style="fill:var(--skw)">if <tspan style="fill:var(--stx)">x &gt; </tspan><tspan style="fill:var(--snum)">5</tspan></text>
+          <path class="red" d="M50 166q4 4 8 0t8 0 8 0 8 0 8 0 8 0 8 0 8 0" fill="none" style="stroke:var(--serr)" stroke-width="2"/>
+          <text class="green" x="50" y="160" style="fill:var(--skw)">if <tspan style="fill:var(--stx)">x &gt; </tspan><tspan style="fill:var(--snum)">5</tspan><tspan style="fill:var(--stx)">:</tspan></text>
+          <text x="82" y="186" style="fill:var(--skw)">print<tspan style="fill:var(--stx)">(</tspan><tspan style="fill:var(--sstr)">"Big"</tspan><tspan style="fill:var(--stx)">)</tspan></text>
+          <text x="50" y="212" style="fill:var(--skw)">else<tspan style="fill:var(--stx)">:</tspan></text>
+          <text x="82" y="238" style="fill:var(--skw)">print<tspan style="fill:var(--stx)">(</tspan><tspan style="fill:var(--sstr)">"Small"</tspan><tspan style="fill:var(--stx)">)</tspan></text>
+        </g>
+        <g class="dlg">
+          <rect class="red" x="196" y="62" width="214" height="118" rx="12" style="fill:var(--s1);stroke:var(--serr)" stroke-width="2"/>
+          <rect class="green" x="196" y="62" width="214" height="118" rx="12" style="fill:var(--s1)" stroke="#7cbf98" stroke-width="2"/>
+          <path class="red" d="M197 74a11 11 0 0 1 11-11h190a11 11 0 0 1 11 11v14H197z" style="fill:var(--serrT)"/>
+          <path class="green" d="M197 74a11 11 0 0 1 11-11h190a11 11 0 0 1 11 11v14H197z" style="fill:var(--sokT)"/>
+          <text class="red mono" x="208" y="81" font-size="12" font-weight="800" style="fill:var(--serrD)">⚠ SyntaxError</text>
+          <text class="green mono" x="208" y="81" font-size="12" font-weight="800" style="fill:var(--sokD)">✓ FIXED</text>
+          <text class="mono" x="392" y="81" font-size="12" style="fill:var(--serrD)" opacity=".7">✕</text>
+          <text class="red mono" x="212" y="124" font-size="17" font-weight="700" style="fill:var(--serrD)">if x &gt; 5</text>
+          <text class="green mono" x="212" y="124" font-size="17" font-weight="700" style="fill:var(--sokD)">if x &gt; 5:</text>
+          <rect x="212" y="142" width="120" height="8" rx="4" style="fill:var(--s2)"/>
+          <rect x="212" y="156" width="78" height="8" rx="4" style="fill:var(--s2)"/>
+        </g>
+        <rect x="10" y="338" width="410" height="58" rx="12" style="fill:var(--s4);stroke:var(--s3)" stroke-width="2"/>
+        <text x="26" y="373" class="mono" font-size="15" font-weight="800" style="fill:var(--sstr)">&gt;&gt;&gt;</text>
+        <text x="64" y="374" class="mono" font-size="17" style="fill:var(--stx)">if x &gt; 5:</text>
+        <rect class="cover" x="62" y="352" width="96" height="32" style="fill:var(--s4)"/>
+        <rect x="160" y="358" width="9" height="20" style="fill:var(--sstr)" opacity=".8"/>
+        <rect x="366" y="350" width="44" height="34" rx="8" fill="#8ea9db"/><text x="379" y="373" class="mono" font-size="16" font-weight="800" fill="#1f2a40">⏎</text>
+        <g class="mono" font-size="14" font-weight="800">
+          <rect x="440" y="34" width="110" height="34" rx="17" style="fill:var(--s2)" stroke="#8ea9db" stroke-width="2"/>
+          <text x="457" y="56" style="fill:var(--skw)">🐍 Python</text>
+          <rect x="440" y="82" width="110" height="34" rx="17" style="fill:var(--s2)" stroke="#d8be6a" stroke-width="2"/>
+          <text x="459" y="104" style="fill:var(--sstr)">def f():</text>
+        </g>
+        <g class="pop">
+          <circle cx="495" cy="196" r="44" fill="url(#hg)"/>
+          <path d="M495 166l6.6 13.4 14.8 2.1-10.7 10.4 2.5 14.7-13.2-6.9-13.2 6.9 2.5-14.7-10.7-10.4 14.8-2.1z" fill="#fff" fill-opacity=".45"/>
+          <text x="495" y="200" text-anchor="middle" class="mono" font-size="22" font-weight="900" fill="#3a4060">+25</text>
+          <text x="495" y="220" text-anchor="middle" class="mono" font-size="12" font-weight="800" fill="#3a4060">XP</text>
         </g>
         <g style="fill:var(--serr)">
           <path transform="translate(440 272) scale(.85)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -286,7 +355,6 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
   </div>
 </section>
 
-<!-- GAME -->
 <section id="game" class="screen">
   <div class="hud">
     <div class="hearts" id="hearts"></div>
@@ -299,32 +367,31 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
   <div class="ws" id="ws"><div class="ov" id="gov" hidden></div></div>
   <div class="console">
     <div class="keys" data-for="cin"></div>
-    <form class="cform" id="cform" autocomplete="off"><span class="prompt">&gt;</span><input id="cin" class="cin" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send" placeholder="виправлений код" aria-label="Консоль"><button class="go" aria-label="Перевірити">⏎</button></form>
+    <form class="cform" id="cform" autocomplete="off"><span class="prompt">&gt;&gt;&gt;</span><input id="cin" class="cin" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send" placeholder="виправлений рядок" aria-label="Консоль"><button class="go" aria-label="Перевірити">⏎</button></form>
     <div class="cmsg" id="cmsg"></div>
   </div>
 </section>
 
-<!-- TEST START -->
 <section id="tstart" class="screen">
   <div class="formwrap">
     <form id="tsForm" class="card fcard">
       <div class="big" style="text-align:center">📝</div>
       <h2>Тестування</h2>
       <p class="muted">12 завдань · 1 спроба · оцінка /12</p>
+      <div class="selrow"><div class="seg" data-track-seg><button type="button" data-tr="html">HTML і CSS</button><button type="button" data-tr="py">Python</button></div><div class="seg" data-grade-seg><button type="button" data-g="8">8 клас</button><button type="button" data-g="9">9 клас</button></div></div>
       <label>Ім'я та прізвище<input id="tsName" maxlength="40" autocomplete="name"></label>
-      <label>Клас<input id="tsClass" maxlength="10" placeholder="9-А"></label>
+      <label>Клас<input id="tsClass" maxlength="10" placeholder="8-А"></label>
       <button class="btn pri">Почати</button>
       <button type="button" class="btn sec" data-home>Назад</button>
     </form>
   </div>
 </section>
 
-<!-- TEST -->
 <section id="test" class="screen">
   <div class="hud">
     <span class="chip">📝 <b id="tNum">1/12</b></span>
     <span class="chip">⏱ <b id="tTime">00:00</b></span>
-    <span class="chip" id="tAway" style="color:var(--err)" hidden>👁 <b>0</b></span>
+    <span class="chip" id="tAway" style="color:var(--errD)" hidden>👁 <b>0</b></span>
     <span class="sp"></span>
     <button class="ib" id="tExit" aria-label="Вийти">✕</button>
     <div class="prog"><div class="bar"><i id="tBar"></i></div></div>
@@ -332,27 +399,26 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
   <div class="ws tws" id="tws"></div>
   <div class="console" id="tcon">
     <div class="keys" data-for="tin"></div>
-    <form class="cform" id="tform" autocomplete="off"><span class="prompt">&gt;</span><input id="tin" class="cin" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send" placeholder="виправлений код" aria-label="Консоль"><button class="go" aria-label="Відповісти">⏎</button></form>
+    <form class="cform" id="tform" autocomplete="off"><span class="prompt">&gt;&gt;&gt;</span><input id="tin" class="cin" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="send" placeholder="виправлений рядок" aria-label="Консоль"><button class="go" aria-label="Відповісти">⏎</button></form>
     <div class="cmsg" id="tmsg"></div>
   </div>
 </section>
 
-<!-- RESULT -->
 <section id="result" class="screen"><div class="res" id="resBox"></div></section>
 </main>
 </div>
 
-<!-- INFO -->
 <div class="modal" id="info" hidden>
   <div class="mbox" role="dialog" aria-modal="true" aria-labelledby="infoT">
     <button class="ib mclose" id="infoClose" aria-label="Закрити">✕</button>
     <h2 id="infoT">Баг-шторм</h2>
-    <p class="muted" style="margin:0">Виправляй помилки в коді HTML і CSS, поки вікна не завалили екран.</p>
+    <p class="muted" style="margin:0">Виправляй помилки в коді HTML, CSS і Python, поки вікна не завалили екран.</p>
     <h3>Гра</h3>
     <ul>
-      <li>Введи виправлений рядок і натисни <kbd>Enter</kbd>.</li>
+      <li>Обери мову (для Python — клас), введи виправлений рядок і натисни <kbd>Enter</kbd>.</li>
       <li>Вікно пролежало 30 с — мінус ❤. Зелене ✚ — плюс ❤ (до 5).</li>
       <li>Кожні 5 виправлень — новий рівень.</li>
+      <li>У Python регістр важливий: <kbd>print</kbd> ≠ <kbd>Print</kbd>.</li>
     </ul>
     <h3>Тестування</h3>
     <ul>
@@ -362,9 +428,11 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
     <h3>Керування</h3>
     <ul>
       <li><kbd>Enter</kbd> перевірити · <kbd>Tab</kbd> взяти рядок · <kbd>Esc</kbd> пауза</li>
-      <li>Клік або дотик по вікну — скопіювати рядок</li>
+      <li>Клік або дотик по вікну — скопіювати рядок · <kbd>⇥</kbd> відступ</li>
     </ul>
-    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:18px"><a class="btn sec gh" style="margin-top:0" href="https://github.com/whyuxavier/bug-storm" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>GitHub</a><a class="btn sec" href="https://whyuxavier.github.io/bug-storm-python/" target="_blank" rel="noopener">🐍 Баг-шторм: Python</a></div>
+    <div class="links">
+      <a class="btn sec" href="https://github.com/whyuxavier/bug-storm" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>GitHub</a>
+    </div>
   </div>
 </div>
 
@@ -374,10 +442,84 @@ const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.
 const coarse=matchMedia('(pointer:coarse)').matches;
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
-function norm(s){return s.toLowerCase().replace(/[‘’'`«»“”]/g,'"').replace(/\s+/g,' ').replace(/\s*([<>=:;{}\/,"()])\s*/g,'$1').replace(/\/>/g,'>').replace(/;}/g,'}').replace(/;$/,'').trim()}
+/* HTML/CSS: регістр не важливий, лапки й пробіли біля символів не важливі */
+function normH(s){return s.toLowerCase().replace(/[‘’'`«»“”]/g,'"').replace(/\s+/g,' ').replace(/\s*([<>=:;{}\/,"()])\s*/g,'$1').replace(/\/>/g,'>').replace(/;}/g,'}').replace(/;$/,'').trim()}
+/* Python: регістр важливий; пробіли біля операторів не важливі; відступ важливий лише в завданнях із ind */
+function normP(s,ind){const raw=s.replace(/\t/g,'    ').replace(/[\r\n]+/g,' ');const lead=/^\s+\S/.test(raw);
+  const t=raw.trim().replace(/[‘’'`«»“”]/g,'"').replace(/\s+/g,' ').replace(/\s*([()\[\]{}:,=+\-*\/<>!%."#])\s*/g,'$1');
+  return (ind&&lead?'⇥':'')+t}
+const norm=(t,v)=>t.key==='html'?normH(v):normP(v,t.ind);
 
-/* ---------- tasks ---------- */
-const T=[
+/* ---------- завдання: [клас, складність, тема, рядки коду, № помилкового рядка, підказка, відповіді, відступ?] ---------- */
+const RAW=[
+// 8 клас — Основи
+[8,1,'Основи',['print("Hello)'],0,'Лапку не закрито',['print("Hello")']],
+[8,1,'Основи',['Print("Hi")'],0,'Python розрізняє великі й малі літери',['print("Hi")']],
+[8,1,'Основи',['print "Hi"'],0,'Потрібні дужки',['print("Hi")']],
+[8,1,'Основи',['name = input("Name: "','print(name)'],0,'Дужку не закрито',['name = input("Name: ")']],
+[8,1,'Основи',['a = input("Age: ")','age = a + 1'],1,'input() повертає рядок — перетвори на число',['age = int(a) + 1']],
+[8,1,'Основи',['2x = 10'],0,'Ім\'я змінної не починається з цифри',['x2 = 10','x = 10']],
+[8,1,'Основи',['x = 5','print(X)'],1,'Змінна називається інакше',['print(x)']],
+[8,1,'Основи',['print("Sum: " + 5)'],0,'Рядок і число так не додаються',['print("Sum: " + str(5))','print("Sum:", 5)','print("Sum: ", 5)']],
+[8,1,'Основи',['x == 5','print(x)'],0,'Тут потрібне присвоєння',['x = 5']],
+[8,1,'Основи',['# ціла частина від ділення','x = 7 / 2'],1,'Потрібен інший оператор ділення',['x = 7 // 2']],
+[8,1,'Основи',['# остача від ділення','r = 7 mod 2'],1,'У Python остачу дає інший знак',['r = 7 % 2']],
+// 8 клас — Розгалуження
+[8,2,'Розгалуження',['x = 7','if x > 5','    print("Big")'],1,'Не вистачає символу',['if x > 5:']],
+[8,2,'Розгалуження',['if x = 10:','    print("Ten")'],0,'Порівняння — подвійний знак',['if x == 10:']],
+[8,2,'Розгалуження',['if x > 0:','    print("Plus")','else','    print("Minus")'],2,'Не вистачає символу',['else:']],
+[8,2,'Розгалуження',['if x > 0:','    print("Plus")','else if x < 0:','    print("Minus")'],2,'У Python для цього є окреме слово',['elif x < 0:']],
+[8,2,'Розгалуження',['if x > 0:','print("Plus")'],1,'Тіло умови пишуть з відступом',['    print("Plus")'],1],
+[8,2,'Розгалуження',['if x > 5 and < 10:','    print("OK")'],0,'Друге порівняння треба написати повністю',['if x > 5 and x < 10:','if 5 < x < 10:']],
+[8,2,'Розгалуження',['if a =< 5:','    print(a)'],0,'Оператор записано неправильно',['if a <= 5:']],
+[8,2,'Розгалуження',['if x <> 0:','    print(10 / x)'],0,'«Не дорівнює» пишуть інакше',['if x != 0:']],
+// 8 клас — Цикли
+[8,2,'Цикли',['for i in range(5)','    print(i)'],0,'Не вистачає символу',['for i in range(5):']],
+[8,2,'Цикли',['for i in range 5:','    print(i)'],0,'range — це функція',['for i in range(5):']],
+[8,2,'Цикли',['# числа від 1 до 10','for i in range(1, 10):','    print(i)'],1,'Останнє число в range не входить',['for i in range(1, 11):']],
+[8,2,'Цикли',['x = 0','while x < 10','    x += 1'],1,'Не вистачає символу',['while x < 10:']],
+[8,2,'Цикли',['for i in rang(3):','    print(i)'],0,'Функцію написано з помилкою',['for i in range(3):']],
+[8,3,'Цикли',['x = 0','while x < 5:','    print(x)','    x = x - 1'],3,'Цикл ніколи не закінчиться',['x = x + 1','x += 1']],
+[8,3,'Цикли',['# 10, 9, … 1','for x in range(10, 0):','    print(x)'],1,'Потрібен від\'ємний крок',['for x in range(10, 0, -1):']],
+// 8 клас — Tkinter
+[8,3,'Tkinter',['import Tkinter'],0,'Назва модуля — малими літерами',['import tkinter']],
+[8,3,'Tkinter',['from tkinter import *','root = Tk()','root.mainloop'],2,'Метод треба викликати',['root.mainloop()']],
+[8,3,'Tkinter',['btn = Button(root, txt="OK")','btn.pack()'],0,'Параметр написано з помилкою',['btn = Button(root, text="OK")']],
+[8,3,'Tkinter',['btn = Button(root, text="Go", command=go())'],0,'Функцію передають без дужок',['btn = Button(root, text="Go", command=go)']],
+[8,3,'Tkinter',['entry = Entry(root)','name = entry.get'],1,'Метод треба викликати',['name = entry.get()']],
+[8,3,'Tkinter',['from tkinter import *','root = tk()'],1,'Назва класу — з великої літери',['root = Tk()']],
+[8,3,'Tkinter',['lbl.config(text="Hi"'],0,'Дужку не закрито',['lbl.config(text="Hi")']],
+[8,3,'Tkinter',['root = Tk()','root.title = "Game"'],1,'title — це метод',['root.title("Game")']],
+// 9 клас — Списки
+[9,1,'Списки',['a = [1, 2, 3'],0,'Дужку не закрито',['a = [1, 2, 3]']],
+[9,1,'Списки',['a = [1, 2, 3]','a.add(4)'],1,'Для списку потрібен інший метод',['a.append(4)']],
+[9,1,'Списки',['a = [5, 7, 9]','print(a[3])'],1,'Індекси з 0. Виведи останній',['print(a[2])','print(a[-1])']],
+[9,1,'Списки',['a = [4, 8]','n = a.len()'],1,'Довжину рахує функція',['n = len(a)']],
+[9,1,'Списки',['a = [1, 2]','for x in a','    print(x)'],1,'Не вистачає символу',['for x in a:']],
+[9,1,'Списки',['a = [3, 5, 2]','s = summ(a)'],1,'Функцію написано з помилкою',['s = sum(a)']],
+[9,1,'Списки',['a = ["x", "y" "z"]'],0,'Не вистачає коми',['a = ["x", "y", "z"]']],
+// 9 клас — Рядки
+[9,1,'Рядки',['s = "hello"','print(s.upper)'],1,'Метод треба викликати',['print(s.upper())']],
+[9,1,'Рядки',['print(len "word")'],0,'len — це функція',['print(len("word"))']],
+[9,1,'Рядки',['name = "Ann"','print("Hi, " name)'],1,'Не вистачає + або коми',['print("Hi, " + name)','print("Hi, ", name)','print("Hi,", name)']],
+[9,2,'Рядки',['name = "Ann"','print(f"Hi {name")'],1,'Фігурну дужку не закрито',['print(f"Hi {name}")']],
+[9,2,'Рядки',['name = "Ann"','print("Hi {name}")'],1,'Для підстановки потрібна літера перед лапками',['print(f"Hi {name}")']],
+[9,2,'Рядки',['s = "Python"','print(s[0:2)'],1,'Дужку зрізу не закрито',['print(s[0:2])']],
+// 9 клас — Функції
+[9,2,'Функції',['def hello()','    print("Hi")'],0,'Не вистачає символу',['def hello():']],
+[9,2,'Функції',['function hello():','    print("Hi")'],0,'У Python функцію оголошують іншим словом',['def hello():']],
+[9,2,'Функції',['def area(a b):','    return a * b'],0,'Не вистачає коми',['def area(a, b):']],
+[9,2,'Функції',['def hi():','    print("Hi")','hi'],2,'Функцію треба викликати',['hi()']],
+[9,3,'Функції',['def add(a, b):','    a + b'],1,'Функція має повернути результат',['return a + b']],
+[9,3,'Функції',['def double(x):','    return x * 2','print(Double(5))'],2,'Назва функції інша',['print(double(5))']],
+// 9 клас — Модулі
+[9,3,'Модулі',['import random','n = random.randint(1 10)'],1,'Не вистачає коми',['n = random.randint(1, 10)']],
+[9,3,'Модулі',['import random','n = randint(1, 6)'],1,'Звертайся через назву модуля',['n = random.randint(1, 6)']],
+[9,3,'Модулі',['import Random'],0,'Назва модуля — малими літерами',['import random']],
+[9,3,'Модулі',['import math','r = sqrt(16)'],1,'Звертайся через назву модуля',['r = math.sqrt(16)']],
+[9,3,'Модулі',['import random','x = random.choise(a)'],1,'Метод написано з помилкою',['x = random.choice(a)']],
+];
+const HT=[
 // 1 — HTML теги
 {t:1,c:'HTML',b:'<p>Hello<p>',h:'Тег не закрито',a:['<p>Hello</p>']},
 {t:1,c:'HTML',b:'<h1>Title</h2>',h:'Закриваючий тег не той',a:['<h1>Title</h1>']},
@@ -429,8 +571,34 @@ const T=[
 {t:3,c:'CSS',b:'#menu { display: hide; }',h:'Неправильне значення',a:['#menu { display: none; }']},
 {t:3,c:'CSS',b:'body { backround: white; }',h:'Властивість з помилкою',a:['body { background: white; }']},
 ];
-T.forEach(t=>t.n=t.a.map(norm));
-const C=[
+const T=[...RAW.map(([g,t,c,code,k,h,a,ind])=>({key:'py'+g,t,c,code,k,h,a,ind:!!ind,b:code[k]})),...HT.map(x=>({key:'html',t:x.t,c:x.c,code:[x.b],k:0,h:x.h,a:x.a,ind:false,b:x.b}))];
+T.forEach(t=>t.n=t.a.map(x=>norm(t,x)));
+const CP={
+8:[
+{q:'Яка функція виводить текст на екран?',o:['print()','input()','output()','write()']},
+{q:'Що повертає input()?',o:['Рядок (str)','Ціле число (int)','Список','Нічого']},
+{q:'Який тип має значення 3.5?',o:['float','int','str','bool']},
+{q:'Скільки разів виконається тіло циклу for i in range(4)?',o:['4','3','5','0']},
+{q:'Який оператор дає остачу від ділення?',o:['%','//','/','mod']},
+{q:'Яке слово означає «інакше, якщо»?',o:['elif','else if','elseif','otherwise']},
+{q:'Чим у Python позначають блок коду?',o:['Відступом','Фігурними дужками','Словом begin','Крапкою з комою']},
+{q:'Який метод запускає головний цикл вікна tkinter?',o:['mainloop()','run()','start()','loop()']},
+{q:'Який віджет tkinter створює поле для введення?',o:['Entry','Label','Button','Input']},
+{q:'Чому дорівнює 7 // 2?',o:['3','3.5','4','1']},
+],
+9:[
+{q:'Який індекс першого елемента списку?',o:['0','1','-1','first']},
+{q:'Який метод додає елемент у кінець списку?',o:['append()','add()','push()','insert_end()']},
+{q:'Що поверне len([2, 4, 6])?',o:['3','6','2','12']},
+{q:'Яке слово оголошує функцію?',o:['def','function','func','define']},
+{q:'Що робить return?',o:['Повертає результат функції','Виводить на екран','Зупиняє програму','Створює змінну']},
+{q:'Що виведе print("ab" * 3)?',o:['ababab','ab3','Помилку','6']},
+{q:'Який модуль генерує випадкові числа?',o:['random','math','time','rand']},
+{q:'Що поверне "Python"[0]?',o:['P','y','n','Python']},
+{q:'Як перетворити рядок s на великі літери?',o:['s.upper()','upper(s)','s.big()','s.toUpper()']},
+{q:'Що поверне random.randint(1, 3)?',o:['Ціле число від 1 до 3','Дробове число','Завжди 1','Список']},
+]};
+const HC=[
 {q:'Який тег створює посилання?',o:['<a>','<link>','<href>','<url>']},
 {q:'Яка властивість змінює колір тексту?',o:['color','font-color','text-color','background']},
 {q:'Який атрибут задає шлях до зображення?',o:['src','href','alt','path']},
@@ -446,8 +614,30 @@ const C=[
 {q:'Яка властивість задає розмір шрифту?',o:['font-size','text-size','font-weight','size']},
 {q:'Де розміщують видимий вміст сторінки?',o:['<body>','<head>','<title>','<meta>']},
 ];
+const CH={html:HC,py8:CP[8],py9:CP[9]};
+const CATS={html:['HTML','Атрибути','CSS'],py8:['Основи','Розгалуження','Цикли','Tkinter'],py9:['Списки','Рядки','Функції','Модулі']};
 
-/* ---------- sound ---------- */
+/* ---------- мова і клас (посилання: ?t=html або ?t=python&g=9) ---------- */
+const QP=new URLSearchParams(location.search);
+let track=QP.get('t')==='html'?'html':QP.get('t')==='python'?'py':store.get('bs_track','html');
+let grade=QP.get('g')==='9'?9:QP.get('g')==='8'?8:store.get('bs_grade',8);
+const key=()=>track==='html'?'html':'py'+grade;
+const label=k=>k==='html'?'HTML і CSS':'Python · '+k.slice(2)+' клас';
+function paintSel(){
+  document.querySelectorAll('[data-track-seg] button').forEach(b=>b.classList.toggle('on',b.dataset.tr===track));
+  document.querySelectorAll('[data-grade-seg]').forEach(s=>s.hidden=track!=='py');
+  document.querySelectorAll('[data-grade-seg] button').forEach(b=>b.classList.toggle('on',+b.dataset.g===grade));
+  qs('#trackPill').textContent=track==='html'?'HTML/CSS':'Python';
+  qs('#heroHtml').toggleAttribute('hidden',track!=='html');qs('#heroPy').toggleAttribute('hidden',track==='html');
+  qs('#tsClass').placeholder=track==='html'?'10-А':grade+'-А';
+  document.querySelectorAll('.prompt').forEach(p=>p.textContent=track==='html'?'>':'>>>');
+  document.querySelectorAll('.cin').forEach(i=>i.placeholder=track==='html'?'виправлений код':'виправлений рядок');
+  buildKeys();homeStats();
+}
+document.querySelectorAll('[data-track-seg] button').forEach(b=>b.addEventListener('click',()=>{track=b.dataset.tr;store.set('bs_track',track);paintSel();sfx.click()}));
+document.querySelectorAll('[data-grade-seg] button').forEach(b=>b.addEventListener('click',()=>{grade=+b.dataset.g;store.set('bs_grade',grade);paintSel();sfx.click()}));
+
+/* ---------- звук ---------- */
 let soundOn=store.get('bs_sound',true),actx=null;
 function tone(f,d=.12,type='square',v=.05,delay=0){if(!soundOn)return;try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();if(actx.state==='suspended')actx.resume();const t=actx.currentTime+delay,o=actx.createOscillator(),g=actx.createGain();o.type=type;o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(actx.destination);o.start(t);o.stop(t+d+.03)}catch(e){}}
 const sfx={ok(){tone(660,.08);tone(990,.12,'square',.05,.07)},err(){tone(170,.18,'sawtooth',.05)},heal(){[523,659,784,1046].forEach((f,i)=>tone(f,.1,'triangle',.08,i*.06))},hurt(){tone(300,.12,'sawtooth',.06);tone(140,.25,'sawtooth',.06,.1)},lvl(){[440,554,659,880].forEach((f,i)=>tone(f,.12,'square',.05,i*.08))},over(){[400,300,200,120].forEach((f,i)=>tone(f,.2,'triangle',.08,i*.15))},click(){tone(880,.04,'square',.03)}};
@@ -456,42 +646,45 @@ const ICON_OFF='<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm18.7 1.1
 function paintSound(){const b=qs('#soundBtn');b.innerHTML=soundOn?ICON_ON:ICON_OFF;b.setAttribute('aria-label',soundOn?'Вимкнути звук':'Увімкнути звук')}
 qs('#soundBtn').onclick=()=>{soundOn=!soundOn;store.set('bs_sound',soundOn);paintSound();sfx.click()};
 paintSound();
+/* ---------- тема ---------- */
 const MOON='<svg viewBox="0 0 24 24"><path d="M20 15.3A8.5 8.5 0 0 1 8.7 4a8.5 8.5 0 1 0 11.3 11.3z"/></svg>';
 const SUN='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
 function paintTheme(){const l=document.documentElement.dataset.theme==='light',b=qs('#themeBtn');b.innerHTML=l?MOON:SUN;b.setAttribute('aria-label',l?'Темна тема':'Світла тема');qs('meta[name=theme-color]').content=l?'#f4f2ee':'#1c1e24'}
 qs('#themeBtn').onclick=()=>{const l=document.documentElement.dataset.theme!=='light';if(l)document.documentElement.dataset.theme='light';else delete document.documentElement.dataset.theme;store.set('bs_theme',l?'light':'dark');paintTheme();sfx.click()};
 paintTheme();
 
-/* ---------- viewport / screens ---------- */
+/* ---------- екрани ---------- */
 function setVH(){const vv=window.visualViewport,r=document.documentElement.style;r.setProperty('--vh',(vv?vv.height:innerHeight)+'px');r.setProperty('--vt',(vv?vv.offsetTop:0)+'px')}
 if(window.visualViewport){visualViewport.addEventListener('resize',setVH);visualViewport.addEventListener('scroll',setVH)}
 addEventListener('resize',setVH);setVH();
 function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id===id));document.body.classList.toggle('playing',id==='game'||id==='test');setVH();scrollTo(0,0);if(id==='home')homeStats()}
-function homeStats(){qs('#sBest').textContent=store.get('bs_best',0);qs('#sXp').textContent=store.get('bs_xp',0)}
-homeStats();
+function homeStats(){qs('#sBest').textContent=store.get('bs_best_'+key(),0);qs('#sXp').textContent=store.get('bs_xp',0)}
 function goHome(){if(G.started&&!G.saved)endSession();if(TS){clearInterval(TS.timer);TS=null}show('home')}
 qs('#brand').onclick=()=>{if(TS&&document.body.classList.contains('playing')&&!confirm('Вийти з тестування? Результат не збережеться.'))return;goHome()};
 document.addEventListener('click',e=>{if(e.target.closest('[data-home]'))goHome()});
 
-/* ---------- quick keys ---------- */
-const KEYS=['<','>','/','"','=','{','}',':',';','.','#','_','-'];
+/* ---------- кнопки символів ---------- */
+const KEYS={html:['<','>','/','"','=','{','}',':',';','.','#','_','-'],py:['⇥','(',')',':','"','=','[',']','{','}',',','.','_','#','+','<','>']};
 function insertAt(inp,s){const a=inp.selectionStart??inp.value.length,b=inp.selectionEnd??a;inp.value=inp.value.slice(0,a)+s+inp.value.slice(b);inp.focus();inp.setSelectionRange(a+s.length,a+s.length)}
-document.querySelectorAll('.keys').forEach(k=>{const inp=qs('#'+k.dataset.for);KEYS.forEach(c=>{const b=document.createElement('button');b.type='button';b.textContent=c;b.addEventListener('pointerdown',e=>e.preventDefault());b.addEventListener('mousedown',e=>e.preventDefault());b.addEventListener('click',()=>insertAt(inp,c));k.appendChild(b)})});
+function buildKeys(){document.querySelectorAll('.keys').forEach(k=>{const inp=qs('#'+k.dataset.for);k.innerHTML='';KEYS[track==='html'?'html':'py'].forEach(c=>{const b=document.createElement('button');b.type='button';b.textContent=c;b.addEventListener('pointerdown',e=>e.preventDefault());b.addEventListener('mousedown',e=>e.preventDefault());b.addEventListener('click',()=>insertAt(inp,c==='⇥'?'    ':c));k.appendChild(b)})})}
 
-/* ---------- info modal ---------- */
+/* ---------- [i] ---------- */
 function openInfo(){if(G.on&&!G.paused)pause(true);qs('#info').hidden=false;qs('#infoClose').focus()}
 function closeInfo(){qs('#info').hidden=true}
 qs('#infoBtn').onclick=openInfo;qs('#infoClose').onclick=closeInfo;
 qs('#info').addEventListener('click',e=>{if(e.target.id==='info')closeInfo()});
 
-/* ---------- GAME ---------- */
+const codeHTML=t=>t.code.map((l,i)=>`<span class="ln${i===t.k?' bad':''}">${esc(l)}</span>`).join('');
+const matches=(t,v)=>t.n.includes(norm(t,v));
+
+/* ---------- ГРА ---------- */
 const HEART='<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
 const ws=qs('#ws'),cin=qs('#cin'),gov=qs('#gov');
 const G={on:false,started:false,saved:true};
 let runId=0;
 function startGame(){
   ws.querySelectorAll('.win,.float,.toast').forEach(e=>e.remove());
-  Object.assign(G,{on:true,started:true,saved:false,paused:false,lives:5,score:0,xp:0,level:1,fixed:0,combo:0,wins:[],spawnT:99,lastH:0,sel:null,recent:[],last:performance.now()});
+  Object.assign(G,{on:true,started:true,saved:false,paused:false,key:key(),lives:5,score:0,xp:0,level:1,fixed:0,combo:0,wins:[],spawnT:99,sel:null,recent:[],last:performance.now()});
   gov.hidden=true;cin.value='';msg('');
   show('game');renderHUD();toast('Рівень 1');
   const id=++runId;requestAnimationFrame(t=>loop(t,id));
@@ -499,7 +692,7 @@ function startGame(){
 }
 function loop(now,id){if(id!==runId||!G.on)return;const dt=Math.min(.05,(now-G.last)/1000);G.last=now;if(!G.paused)update(dt);requestAnimationFrame(t=>loop(t,id))}
 function pickTier(){const L=G.level,r=Math.random();if(L<=2)return 1;if(L<=4)return r<.4?1:2;if(L<=6)return r<.2?1:r<.6?2:3;return r<.1?1:r<.4?2:3}
-function pickTask(tier){const pool=T.filter(t=>t.t===tier&&!G.recent.includes(t)&&!G.wins.some(w=>w.task===t));const t=pool[Math.random()*pool.length|0]||T.find(x=>x.t===tier);G.recent.push(t);if(G.recent.length>10)G.recent.shift();return t}
+function pickTask(tier){const mine=T.filter(t=>t.key===G.key);const pool=mine.filter(t=>t.t===tier&&!G.recent.includes(t)&&!G.wins.some(w=>!w.done&&w.task===t));const t=pool[Math.random()*pool.length|0]||mine.find(x=>x.t===tier)||mine[0];G.recent.push(t);if(G.recent.length>10)G.recent.shift();return t}
 const LIFE=30;
 function update(dt){
   const H=ws.clientHeight,W=ws.clientWidth,L=G.level;
@@ -507,7 +700,7 @@ function update(dt){
   const every=act.length?Math.max(3.5,8-(L-1)*.5):.6;
   G.spawnT+=dt;
   if(G.spawnT>=every&&act.length<12)spawn(W,H);
-  const speed=Math.max(H/10,60)*(1+(L-1)*.08);
+  const speed=Math.max(H/5,60)*(1+(L-1)*.08);
   const live=G.wins.filter(w=>!w.done);
   live.forEach(w=>{w.w=w.el.offsetWidth;w.h=w.el.offsetHeight;w.x=Math.min(w.x,Math.max(8,W-w.w-8))});
   live.sort((a,b)=>b.y-a.y);
@@ -529,9 +722,8 @@ function spawn(W,H){
   let tier=pickTier();if(heal)tier=Math.max(1,tier-1);
   const task=pickTask(tier),el=document.createElement('div');
   el.className='win'+(heal?' heal':'');
-  el.innerHTML=`<div class="tb"><span>${heal?'✚ HEAL':'⚠ ERROR'}</span><span class="tag"></span><span class="x">✕</span></div><pre></pre><div class="hint"></div><div class="ttl"><i></i></div>`;
-  el.querySelector('.tag').textContent=task.c;el.querySelector('pre').textContent=task.b;el.querySelector('.hint').textContent=task.h;
-  el.style.top='-300px';ws.appendChild(el);
+  el.innerHTML=`<div class="tb"><span>${heal?'✚ HEAL':'⚠ ERROR'}</span><span class="tag">${esc(task.c)}</span><span class="x">✕</span></div><pre>${codeHTML(task)}</pre><div class="hint">${esc(task.h)}</div><div class="ttl"><i></i></div>`;
+  el.style.top='-400px';ws.appendChild(el);
   const ww=el.offsetWidth,hh=el.offsetHeight,maxX=Math.max(8,W-ww-8);
   let best=null;
   for(let k=0;k<10;k++){
@@ -563,7 +755,7 @@ function renderHUD(gain){
   qs('#hLvl').textContent='Рів. '+G.level;qs('#hBar').style.width=(G.fixed%5)/5*100+'%';
   qs('#hCombo').textContent=G.combo>1?'×'+(1+Math.min(G.combo,5)*.2).toFixed(1):'';
 }
-function floatText(w,t){const f=document.createElement('div');f.className='float';f.textContent=t;f.style.left=(parseFloat(w.el.style.left)+20)+'px';f.style.top=(w.y+8)+'px';ws.appendChild(f);setTimeout(()=>f.remove(),900)}
+function floatText(w,t){const f=document.createElement('div');f.className='float';f.textContent=t;f.style.left=(w.x+20)+'px';f.style.top=(w.y+8)+'px';ws.appendChild(f);setTimeout(()=>f.remove(),900)}
 function toast(t){const d=document.createElement('div');d.className='toast';d.textContent=t;ws.appendChild(d);setTimeout(()=>d.remove(),1300)}
 function fix(w){
   w.done=true;if(G.sel===w)G.sel=null;
@@ -582,21 +774,19 @@ function miss(w){
   w.done=true;if(G.sel===w)G.sel=null;
   w.el.classList.add('miss');setTimeout(()=>{w.el.remove();G.wins=G.wins.filter(x=>x!==w)},400);
   if(w.heal)return;
-  hurt('⌛ Час вийшов. Правильно: '+w.task.a[0]);
+  hurt('⌛ Час вийшов. Правильно: '+w.task.a[0].trim());
 }
 qs('#cform').addEventListener('submit',e=>{
   e.preventDefault();if(!G.on||G.paused)return;
-  const v=cin.value.trim();if(!v)return;
-  const n=norm(v),act=G.wins.filter(w=>!w.done);
+  const v=cin.value;if(!v.trim())return;
+  const act=G.wins.filter(w=>!w.done);
   const order=G.sel&&!G.sel.done?[G.sel,...act.filter(w=>w!==G.sel)]:act.sort(byAge);
-  const hit=order.find(w=>w.task.n.includes(n));
+  const hit=order.find(w=>matches(w.task,v));
   if(hit){fix(hit);cin.value=''}
   else{G.combo=0;renderHUD();sfx.err();msg('✗ Не підходить жодному вікну','err');const f=qs('#cform');f.classList.remove('shake');void f.offsetWidth;f.classList.add('shake')}
 });
 cin.addEventListener('keydown',e=>{if(e.key==='Tab'){e.preventDefault();selectWin(lowest())}});
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){if(!qs('#info').hidden){closeInfo();return}if(G.on)pause(!G.paused)}
-});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(!qs('#info').hidden){closeInfo();return}if(G.on)pause(!G.paused)}});
 function pause(p){
   if(!G.on)return;G.paused=p;
   if(p){gov.innerHTML=`<div class="card"><div class="big">⏸</div><h2>Пауза</h2><div class="btns"><button class="btn pri" id="resume">Продовжити</button><button class="btn sec" data-home>Меню</button></div></div>`;gov.hidden=false;qs('#resume').onclick=()=>pause(false)}
@@ -604,7 +794,7 @@ function pause(p){
 }
 qs('#pauseBtn').onclick=()=>pause(!G.paused);
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&G.on&&!G.paused)pause(true)});
-function endSession(){G.on=false;const best=store.get('bs_best',0),rec=G.score>best;if(rec)store.set('bs_best',G.score);store.set('bs_xp',store.get('bs_xp',0)+G.xp);G.saved=true;return rec&&G.score>0}
+function endSession(){G.on=false;const k='bs_best_'+G.key,best=store.get(k,0),rec=G.score>best;if(rec)store.set(k,G.score);store.set('bs_xp',store.get('bs_xp',0)+G.xp);G.saved=true;return rec&&G.score>0}
 function gameOver(){
   const rec=endSession();sfx.over();cin.blur();
   gov.innerHTML=`<div class="card"><div class="big">💥</div><h2>Гру завершено</h2><div class="grid3"><div><b>${G.score}</b><span>бали</span></div><div><b>${G.level}</b><span>рівень</span></div><div><b>+${G.xp}</b><span>XP</span></div></div>${rec?'<p style="margin:0 0 14px;color:var(--warn);font-weight:800">🏆 Новий рекорд!</p>':''}<div class="btns"><button class="btn pri" id="again">Ще раз</button><button class="btn sec" data-home>Меню</button></div></div>`;
@@ -612,19 +802,19 @@ function gameOver(){
 }
 qs('#playBtn').onclick=()=>{sfx.click();startGame()};
 
-/* ---------- TEST ---------- */
+/* ---------- ТЕСТУВАННЯ ---------- */
 let TS=null;const tin=qs('#tin');
 qs('#testBtn').onclick=()=>{sfx.click();show('tstart');if(!coarse)qs('#tsName').focus()};
-function buildTest(){
-  const pick=(tier,n)=>shuffle(T.filter(t=>t.t===tier)).slice(0,n).map(t=>({type:'fix',task:t,cat:t.c}));
-  const ch=shuffle(C.slice()).slice(0,4).map(c=>({type:'choice',ch:c,cat:'Теорія'}));
-  const a=pick(1,3),b=pick(2,3),c=pick(3,2);
-  return [a[0],a[1],ch[0],a[2],b[0],ch[1],b[1],b[2],ch[2],c[0],c[1],ch[3]];
+function buildTest(g){
+  const per=CATS[g].length===3?[3,3,2]:[2,2,2,2];
+  const f=[];CATS[g].forEach((c,i)=>shuffle(T.filter(t=>t.key===g&&t.c===c)).slice(0,per[i]).forEach(t=>f.push({type:'fix',task:t,cat:c})));
+  const ch=shuffle(CH[g].slice()).slice(0,4).map(c=>({type:'choice',ch:c,cat:'Теорія'}));
+  return [f[0],f[1],ch[0],f[2],f[3],ch[1],f[4],f[5],ch[2],f[6],f[7],ch[3]];
 }
 qs('#tsForm').addEventListener('submit',e=>{
   e.preventDefault();const name=qs('#tsName').value.trim(),cls=qs('#tsClass').value.trim();
   if(!name){const i=qs('#tsName');i.classList.remove('shake');void i.offsetWidth;i.classList.add('shake');i.focus();return}
-  TS={name,cls,list:buildTest(),i:0,res:[],t0:Date.now(),qt:Date.now(),lock:false,away:0,awayMs:0,awayAt:0};
+  TS={name,cls,g:key(),list:buildTest(key()),i:0,res:[],t0:Date.now(),qt:Date.now(),lock:false,away:0,awayMs:0,awayAt:0};
   qs('#tAway').hidden=true;
   show('test');TS.timer=setInterval(tick,1000);tick();showQ();
 });
@@ -640,8 +830,7 @@ function showQ(){
   TS.lock=false;TS.qt=Date.now();qs('#tmsg').textContent='';
   const tws=qs('#tws');tws.innerHTML='';const el=document.createElement('div');el.className='win twin';
   if(q.type==='fix'){
-    el.innerHTML=`<div class="tb"><span>⚠ ERROR #${TS.i+1}</span><span class="tag"></span></div><pre></pre><div class="hint"></div>`;
-    el.querySelector('.tag').textContent=q.cat;el.querySelector('pre').textContent=q.task.b;el.querySelector('.hint').textContent=q.task.h;
+    el.innerHTML=`<div class="tb"><span>⚠ ERROR #${TS.i+1}</span><span class="tag">${esc(q.cat)}</span></div><pre>${codeHTML(q.task)}</pre><div class="hint">${esc(q.task.h)}</div>`;
     el.style.cursor='pointer';el.addEventListener('mousedown',e=>e.preventDefault());
     el.addEventListener('click',()=>{if(TS.lock)return;tin.value=q.task.b;tin.focus();tin.setSelectionRange(tin.value.length,tin.value.length);sfx.click()});
     qs('#tcon').hidden=false;tin.value='';if(!coarse)tin.focus();
@@ -661,33 +850,35 @@ function answerT(given,ok){
   setTimeout(()=>{if(!TS)return;TS.i++;if(TS.i>=TS.list.length)finishTest();else showQ()},900);
 }
 qs('#tform').addEventListener('submit',e=>{
-  e.preventDefault();if(!TS||TS.lock)return;const v=tin.value.trim();
-  if(!v){const f=qs('#tform');f.classList.remove('shake');void f.offsetWidth;f.classList.add('shake');return}
-  answerT(v,TS.list[TS.i].task.n.includes(norm(v)));tin.value='';
+  e.preventDefault();if(!TS||TS.lock)return;const v=tin.value;
+  if(!v.trim()){const f=qs('#tform');f.classList.remove('shake');void f.offsetWidth;f.classList.add('shake');return}
+  answerT(v.replace(/\s+$/,''),matches(TS.list[TS.i].task,v));tin.value='';
 });
+tin.addEventListener('keydown',e=>{if(e.key==='Tab'&&TS&&TS.g!=='html'&&TS.list[TS.i].type==='fix'){e.preventDefault();insertAt(tin,'    ')}});
 qs('#tExit').onclick=()=>{if(confirm('Вийти з тестування? Результат не збережеться.'))goHome()};
 let lastReport='';
 function finishTest(){
   clearInterval(TS.timer);backTest();tin.blur();
-  const r=TS.res,n=r.length,c=r.filter(x=>x.ok).length,pct=Math.round(c/n*100),grade=Math.max(1,Math.round(c/n*12)),total=Date.now()-TS.t0;
-  const lvl=grade>=10?['Високий','var(--ok)']:grade>=7?['Достатній','var(--acc2)']:grade>=4?['Середній','var(--warn)']:['Початковий','var(--err)'];
-  const date=new Date().toLocaleDateString('uk-UA'),cats=['HTML','Атрибути','CSS','Теорія'];
+  const r=TS.res,n=r.length,c=r.filter(x=>x.ok).length,pct=Math.round(c/n*100),grade12=Math.max(1,Math.round(c/n*12)),total=Date.now()-TS.t0;
+  const lvl=grade12>=10?['Високий','var(--ok)']:grade12>=7?['Достатній','var(--acc)']:grade12>=4?['Середній','var(--warn)']:['Початковий','var(--err)'];
+  const date=new Date().toLocaleDateString('uk-UA'),cats=[...CATS[TS.g],'Теорія'];
   const task=x=>x.q.type==='fix'?x.q.task.b:x.q.ch.q,right=x=>x.q.type==='fix'?x.q.task.a[0]:x.q.ch.o[0];
   const catRows=cats.map(k=>{const a=r.filter(x=>x.q.cat===k);if(!a.length)return'';const ok=a.filter(x=>x.ok).length;return`<div class="cat"><span>${k}</span><div class="bar"><i style="width:${ok/a.length*100}%"></i></div><span>${ok}/${a.length}</span></div>`}).join('');
   const rows=r.map((x,i)=>`<tr><td>${i+1}</td><td>${x.q.type==='fix'?`<code>${esc(task(x))}</code>`:esc(task(x))}</td><td><code>${esc(x.given)}</code></td><td><code>${esc(right(x))}</code></td><td class="${x.ok?'okc':'bdc'}">${x.ok?'✓':'✗'}</td></tr>`).join('');
   qs('#resBox').innerHTML=`
-    <div class="rhead"><div><div class="rname">${esc(TS.name)}</div><div class="muted">${TS.cls?esc(TS.cls)+' · ':''}${date} · ⏱ ${fmt(total)}</div></div>
-    <div class="grade" style="--gc:${lvl[1]}"><div>${grade}<small>з 12</small></div></div></div>
-    <div class="chips"><span class="chip">✓ ${c}/${n}</span><span class="chip">${pct}%</span><span class="chip" style="color:${lvl[1]}">${lvl[0]} рівень</span><span class="chip" style="color:${TS.away?'var(--err)':'var(--ok)'}">👁 Виходів з вкладки: ${TS.away}${TS.away?' · '+fmt(TS.awayMs):''}</span></div>
+    <div class="rhead"><div><div class="rname">${esc(TS.name)}</div><div class="muted">${TS.cls?esc(TS.cls)+' · ':''}${label(TS.g)} · ${date} · ⏱ ${fmt(total)}</div></div>
+    <div class="grade" style="--gc:${lvl[1]}"><div>${grade12}<small>з 12</small></div></div></div>
+    <div class="chips"><span class="chip">✓ ${c}/${n}</span><span class="chip">${pct}%</span><span class="chip">${lvl[0]} рівень</span><span class="chip" style="color:${TS.away?'var(--errD)':'var(--okD)'}">👁 Виходів з вкладки: ${TS.away}${TS.away?' · '+fmt(TS.awayMs):''}</span></div>
     <div class="cats">${catRows}</div>
     <div class="tw"><table class="rt"><thead><tr><th>#</th><th>Завдання</th><th>Відповідь учня</th><th>Правильна відповідь</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
     <div class="btns no-print"><button class="btn pri" id="rPrint">🖨 Друк / PDF</button><button class="btn sec" id="rCopy">📋 Копіювати звіт</button><button class="btn sec" id="rAgain">↻ Ще раз</button><button class="btn sec" data-home>Меню</button></div>`;
-  lastReport=`Баг-шторм · Тестування HTML/CSS\nУчень: ${TS.name}${TS.cls?'\nКлас: '+TS.cls:''}\nДата: ${date}  Час: ${fmt(total)}\nРезультат: ${c}/${n} (${pct}%) — оцінка ${grade}/12, ${lvl[0].toLowerCase()} рівень\nВиходів з вкладки: ${TS.away}${TS.away?' (разом '+fmt(TS.awayMs)+')':''}\n\n`+r.map((x,i)=>`${i+1}. ${x.ok?'✓':'✗'} [${x.q.cat}] ${task(x)}\n   відповідь: ${x.given}${x.ok?'':'\n   правильно: '+right(x)}`).join('\n');
+  lastReport=`Баг-шторм · Тестування: ${label(TS.g)}\nУчень: ${TS.name}${TS.cls?'\nКлас: '+TS.cls:''}\nДата: ${date}  Час: ${fmt(total)}\nРезультат: ${c}/${n} (${pct}%) — оцінка ${grade12}/12, ${lvl[0].toLowerCase()} рівень\nВиходів з вкладки: ${TS.away}${TS.away?' (разом '+fmt(TS.awayMs)+')':''}\n\n`+r.map((x,i)=>`${i+1}. ${x.ok?'✓':'✗'} [${x.q.cat}] ${task(x)}\n   відповідь: ${x.given}${x.ok?'':'\n   правильно: '+right(x)}`).join('\n');
   qs('#rPrint').onclick=()=>print();
   qs('#rCopy').onclick=async e=>{const b=e.currentTarget;try{await navigator.clipboard.writeText(lastReport)}catch(_){const t=document.createElement('textarea');t.value=lastReport;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}b.textContent='✓ Скопійовано';setTimeout(()=>b.textContent='📋 Копіювати звіт',1500)};
   qs('#rAgain').onclick=()=>show('tstart');
   TS=null;show('result');sfx.lvl();
 }
+paintSel();
 </script>
 </body>
 </html>
