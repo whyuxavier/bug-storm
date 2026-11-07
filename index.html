@@ -222,7 +222,7 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
     <div>
       <h1>Баг-<em>шторм</em></h1>
       <p class="lead">Вікна з помилками в коді падають і складаються в стос. Виправ рядок у консолі, поки їх не завалило.</p>
-      <div class="selrow"><div class="seg" data-track-seg><button data-tr="html">HTML і CSS</button><button data-tr="py">Python</button></div><div class="seg" data-grade-seg><button data-g="8">8 клас</button><button data-g="9">9 клас</button></div></div>
+      <div class="selrow"><div class="seg" data-track-seg><button data-tr="html">HTML і CSS</button><button data-tr="py">Python</button></div></div>
       <div class="btns">
         <button class="btn pri" id="playBtn">▶ Грати</button>
         <button class="btn sec" id="testBtn">📝 Тестування</button>
@@ -379,7 +379,7 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
       <div class="big" style="text-align:center">📝</div>
       <h2>Тестування</h2>
       <p class="muted">12 завдань · 1 спроба · оцінка /12</p>
-      <div class="selrow"><div class="seg" data-track-seg><button type="button" data-tr="html">HTML і CSS</button><button type="button" data-tr="py">Python</button></div><div class="seg" data-grade-seg><button type="button" data-g="8">8 клас</button><button type="button" data-g="9">9 клас</button></div></div>
+      <div class="selrow"><div class="seg" data-track-seg><button type="button" data-tr="html">HTML і CSS</button><button type="button" data-tr="py">Python</button></div></div>
       <label>Ім'я та прізвище<input id="tsName" maxlength="40" autocomplete="name"></label>
       <label>Клас<input id="tsClass" maxlength="10" placeholder="8-А"></label>
       <button class="btn pri">Почати</button>
@@ -416,7 +416,7 @@ main{flex:1;min-height:0;display:flex;flex-direction:column}
     <p class="muted" style="margin:0">Виправляй помилки в коді HTML, CSS і Python, поки вікна не завалили екран.</p>
     <h3>Гра</h3>
     <ul>
-      <li>Обери мову (для Python — клас), введи виправлений рядок і натисни <kbd>Enter</kbd>.</li>
+      <li>Обери мову, введи виправлений рядок і натисни <kbd>Enter</kbd>.</li>
       <li>Вікно пролежало 30 с — мінус ❤. Зелене ✚ — плюс ❤ (до 5).</li>
       <li>Кожні 5 виправлень — новий рівень.</li>
       <li>У Python регістр важливий: <kbd>print</kbd> ≠ <kbd>Print</kbd>.</li>
@@ -808,11 +808,12 @@ py9:[
 ],
 };
 const GENQ={html:[],py8:[],py9:[]};
-Object.entries(QT).forEach(([k,arr])=>arr.forEach((f,ti)=>{const seen=new Set();for(let i=0;i<10&&seen.size<5;i++){const q=f();if(new Set(q.o).size!==q.o.length||q.o.length<3||seen.has(q.q))continue;seen.add(q.q);q.pat='q'+ti;GENQ[k].push(q)}}));
+Object.entries(QT).forEach(([k,arr])=>arr.forEach((f,ti)=>{const seen=new Set();for(let i=0;i<10&&seen.size<5;i++){const q=f();if(new Set(q.o).size!==q.o.length||q.o.length<3||seen.has(q.q))continue;seen.add(q.q);q.pat=k+'q'+ti;GENQ[k].push(q)}}));
 
 const ALL=[...RAW.map(([g,t,c,code,k,h,a,ind],i)=>({key:'py'+g,t,c,code,k,h,a,ind:!!ind,b:code[k],pat:'s'+i})),...HT.map((x,i)=>({key:'html',t:x.t,c:x.c,code:[x.b],k:0,h:x.h,a:x.a,ind:false,b:x.b,pat:'sh'+i})),...GEN];
 ALL.forEach(t=>t.n=t.a.map(x=>norm(t,x)));
 const _seen=new Set();
+ALL.forEach(t=>{if(t.key.startsWith('py'))t.key='py'});
 const T=ALL.filter(t=>{const id=t.key+'|'+t.code.join('\n');if(_seen.has(id)||!t.n.length||t.n.includes(norm(t,t.b)))return false;_seen.add(id);return true});
 const CP={
 8:[
@@ -856,28 +857,24 @@ const HC=[
 {q:'Де розміщують видимий вміст сторінки?',o:['<body>','<head>','<title>','<meta>']},
 ];
 HC.forEach((q,i)=>q.pat='sh'+i);CP[8].forEach((q,i)=>q.pat='s8'+i);CP[9].forEach((q,i)=>q.pat='s9'+i);
-const CH={html:[...HC,...GENQ.html],py8:[...CP[8],...GENQ.py8],py9:[...CP[9],...GENQ.py9]};
-const CATS={html:['HTML','Атрибути','CSS'],py8:['Основи','Розгалуження','Цикли','Tkinter'],py9:['Списки','Рядки','Функції','Модулі']};
+const CH={html:[...HC,...GENQ.html],py:[...CP[8],...CP[9],...GENQ.py8,...GENQ.py9]};
+const CATS={html:['HTML','Атрибути','CSS'],py:['Основи','Розгалуження','Цикли','Tkinter','Списки','Рядки','Функції','Модулі']};
 
-/* ---------- мова і клас (посилання: ?t=html або ?t=python&g=9) ---------- */
+/* ---------- мова і клас (посилання: ?t=html або ?t=python) ---------- */
 const QP=new URLSearchParams(location.search);
 let track=QP.get('t')==='html'?'html':QP.get('t')==='python'?'py':store.get('bs_track','html');
-let grade=QP.get('g')==='9'?9:QP.get('g')==='8'?8:store.get('bs_grade',8);
-const key=()=>track==='html'?'html':'py'+grade;
-const label=k=>k==='html'?'HTML і CSS':'Python · '+k.slice(2)+' клас';
+const key=()=>track==='html'?'html':'py';
+const label=k=>k==='html'?'HTML і CSS':'Python';
 function paintSel(){
   document.querySelectorAll('[data-track-seg] button').forEach(b=>b.classList.toggle('on',b.dataset.tr===track));
-  document.querySelectorAll('[data-grade-seg]').forEach(s=>s.hidden=track!=='py');
-  document.querySelectorAll('[data-grade-seg] button').forEach(b=>b.classList.toggle('on',+b.dataset.g===grade));
   qs('#trackPill').textContent=track==='html'?'HTML/CSS':'Python';
   qs('#heroHtml').toggleAttribute('hidden',track!=='html');qs('#heroPy').toggleAttribute('hidden',track==='html');
-  qs('#tsClass').placeholder=track==='html'?'10-А':grade+'-А';
+  qs('#tsClass').placeholder=track==='html'?'10-А':'9-А';
   document.querySelectorAll('.prompt').forEach(p=>p.textContent=track==='html'?'>':'>>>');
   document.querySelectorAll('.cin').forEach(i=>i.placeholder=track==='html'?'виправлений код':'виправлений рядок');
   buildKeys();homeStats();
 }
 document.querySelectorAll('[data-track-seg] button').forEach(b=>b.addEventListener('click',()=>{track=b.dataset.tr;store.set('bs_track',track);paintSel();sfx.click()}));
-document.querySelectorAll('[data-grade-seg] button').forEach(b=>b.addEventListener('click',()=>{grade=+b.dataset.g;store.set('bs_grade',grade);paintSel();sfx.click()}));
 
 /* ---------- звук ---------- */
 let soundOn=store.get('bs_sound',true),actx=null;
@@ -1051,7 +1048,7 @@ qs('#playBtn').onclick=()=>{sfx.click();startGame()};
 let TS=null;const tin=qs('#tin');
 qs('#testBtn').onclick=()=>{sfx.click();show('tstart');if(!coarse)qs('#tsName').focus()};
 function buildTest(g){
-  const per=CATS[g].length===3?[3,3,2]:[2,2,2,2];
+  const per=CATS[g].length===3?[3,3,2]:CATS[g].map(()=>1);
   const distinct=(arr,n)=>{const out=[],seen=new Set();for(const x of shuffle(arr.slice())){if(seen.has(x.pat))continue;seen.add(x.pat);out.push(x);if(out.length===n)break}return out};
   const f=[];CATS[g].forEach((c,i)=>distinct(T.filter(t=>t.key===g&&t.c===c),per[i]).forEach(t=>f.push({type:'fix',task:t,cat:c})));
   const ch=distinct(CH[g],4).map(c=>({type:'choice',ch:c,cat:'Теорія'}));
